@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "887653457697",
+    "firebase_url": "https://hello-myastro-default-rtdb.firebaseio.com",
+    "project_id": "hello-myastro",
+    "storage_bucket": "hello-myastro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887653457697:android:c99ffacc1d0dee69516860",
+        "android_client_info": {
+          "package_name": "com.hellomyastroapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPQg54A5iQb3wRduZ82n4PJRGkLGcvUc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
