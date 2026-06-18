@@ -76,7 +76,7 @@ export const UnlimitedChatScreen = () => {
 
   const fetchMessages = async () => {
     const bodyContent = {
-      user_id: user.id,
+      user_id: user?.id,
       astrologer_id: astrologerUserId,
     };
     try {

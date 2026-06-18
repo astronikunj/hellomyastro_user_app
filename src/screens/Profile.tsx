@@ -40,7 +40,7 @@ const Profile = (props: Props) => {
     if (astrologerId) {
       getAstroById({
         astrologerId: astrologerId,
-        userId: user.id,
+        userId: user?.id,
       })
         .unwrap()
         .then(res => {

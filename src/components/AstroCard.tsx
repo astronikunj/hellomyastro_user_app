@@ -99,7 +99,7 @@ const AstroCard = (props: Props) => {
               resizeMode="contain"
             />
             <Text style={[styles.textStyle]}>
-              {primartSkills.trim().split(',').slice(0, 2).join(', ')}
+              {primartSkills?.trim() ? primartSkills.trim().split(',').slice(0, 2).join(', ') : ''}
             </Text>
           </View>
           <View style={styles.textViewStyle}>

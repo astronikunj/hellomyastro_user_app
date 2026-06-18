@@ -47,7 +47,7 @@ const RaiseTicket = (props: Props) => {
 			helpSupportId: value,
 			subject: subject,
 			description: description,
-			userId: user.id,
+			userId: user?.id,
 		};
 		try {
 			const res = await addTicket(bodyContent).unwrap();

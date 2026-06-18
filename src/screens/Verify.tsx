@@ -100,7 +100,7 @@ const VerifyOTP = (props: Props) => {
       ToastMessage('Please enter a valid OTP');
       return;
     }
-    const contactDetail = loginTypeValue?.toString().split('-');
+    const contactDetail = loginTypeValue?.toString()?.split('-');
     if (contactDetail == undefined) {
       ToastMessage('Invalid contact details provided');
       return;

@@ -83,7 +83,7 @@ const Wallet = (props: Props) => {
 
     const finalCashback = Math.floor(cashbackAmount); // same as .toInt()
     const body = {
-      userId: user.id,
+      userId: user?.id,
       amount: amountWithGst,
       cashback_amount: finalCashback,
     };
@@ -140,7 +140,7 @@ const Wallet = (props: Props) => {
                 <Text
                   style={
                     styles.walletText
-                  }>{`\u20B9 ${user.totalWalletAmount}`}</Text>
+                  }>{`\u20B9 ${user?.totalWalletAmount || 0}`}</Text>
               </View>
             </View>
           </View>

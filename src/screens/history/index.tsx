@@ -41,7 +41,7 @@ const UserHistory = (props: Props) => {
   const getUserHistory = async () => {
     try {
       const body = {
-        userId: user.id,
+        userId: user?.id,
         startIndex: startIndex,
         fetchRecord: 20,
       };

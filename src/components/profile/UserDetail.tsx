@@ -59,7 +59,7 @@ const UserDetail = (props: Props) => {
               style={[styles.textIconStyle, {marginTop: 4}]}
               resizeMode="contain"
             />
-            <Text style={styles.textStyle}>{astro?.allSkill.trim()}</Text>
+            <Text style={styles.textStyle}>{astro?.allSkill ? astro.allSkill.trim() : ''}</Text>
           </View>
           <View style={styles.textViewStyle}>
             <FastImage
