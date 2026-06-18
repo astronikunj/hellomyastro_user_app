@@ -78,7 +78,7 @@ const HomeScreen = (props: Props) => {
     useState(false);
   const [getPopUpAd] = useGetPopUpAdMutation();
   const [popupAd, setPopUpAd] = useState(null);
-  const [chatWarning, setChatWarning] = useState(false)
+  const [chatWarning, setChatWarning] = useState(false);
 
   const renderHeader = useCallback(() => {
     return (
@@ -334,7 +334,7 @@ const HomeScreen = (props: Props) => {
       const isEligible =
         item.charge * 5 <= userWalletAmount || item.isFreeAvailable;
       if (item.isFreeAvailable && userWalletAmount == 0) {
-        setChatWarning(true)
+        setChatWarning(true);
         return;
       }
       if (!isEligible) {
@@ -491,7 +491,7 @@ const HomeScreen = (props: Props) => {
           <View style={{flex: 1, gap: 4}}>
             <Text style={styles.bottomAdText}>
               We <Text style={{color: Colors.colorOrange}}>Recommend</Text> our
-              top Astrologers{'\n'}just for You at {`\u20B91`} only.
+              top Astrologers{'\n'}just for You at {'\u20B91'} only.
             </Text>
             <View style={{flexDirection: 'row', gap: verticalScale(12)}}>
               <TouchableOpacity

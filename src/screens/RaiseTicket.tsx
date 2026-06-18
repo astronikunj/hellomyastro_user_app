@@ -20,7 +20,7 @@ const RaiseTicket = (props: Props) => {
   const [description, setDescription] = useState('');
   const [getSupport, getSupportRes] = useGetHelpSupportMutation();
 	const [addTicket, addTicketRes] = useAddTicketMutation();
-	const user = useSelector((state: RootState) => state.auth.user)
+	const user = useSelector((state: RootState) => state.auth.user);
 
   const [data, setData] = useState<any[]>();
 
@@ -40,7 +40,7 @@ const RaiseTicket = (props: Props) => {
   };
 	const handleSubmit = async () => {
 		if(value == null || subject.trim().length == 0 || description.trim().length == 0) {
-			ToastMessage({message: 'All fields are required!'})
+			ToastMessage({message: 'All fields are required!'});
 			return;
 		}
 		const bodyContent = {
@@ -48,21 +48,21 @@ const RaiseTicket = (props: Props) => {
 			subject: subject,
 			description: description,
 			userId: user.id,
-		}
+		};
 		try {
-			const res = await addTicket(bodyContent).unwrap()
-			console.log(res)
+			const res = await addTicket(bodyContent).unwrap();
+			console.log(res);
 			if(res.status == 200){
-				setValue(null)
-				setSubject('')
-				setDescription('')
-				ToastMessage({message: 'Ticket Raised successfully!'})
+				setValue(null);
+				setSubject('');
+				setDescription('');
+				ToastMessage({message: 'Ticket Raised successfully!'});
 				navigationRef.goBack();
 			}
 		} catch (error) {
-			console.log('Error: ', error)
+			console.log('Error: ', error);
 		}
-	}
+	};
   return (
     <CustomSafeArea>
       <Header title="Raise an issue" onPress={() => navigationRef.goBack()} />

@@ -7,7 +7,7 @@ import React from 'react';
 import {ScrollView, Text, View, StyleSheet} from 'react-native';
 
 const PrivacyPolicyScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <CustomSafeArea>
       <Header title="Privacy Policy" onPress={() => navigation.goBack()} />

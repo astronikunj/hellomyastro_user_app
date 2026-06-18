@@ -46,11 +46,11 @@ const UserHistory = (props: Props) => {
         fetchRecord: 20,
       };
       const res = await getHistory(body).unwrap();
-      const chatHistory = res.recordList[0]['chatRequest']['chatHistory'];
-      const callHistory = res.recordList[0]['callRequest']['callHistory'];
-      const walletHistory = res.recordList[0]['walletTransaction']['wallet'];
-      const giftHistory = res.recordList[0]['sendGifts']['gifts'];
-      const orderHistory = res.recordList[0]['orders']['order'];
+      const chatHistory = res.recordList[0].chatRequest.chatHistory;
+      const callHistory = res.recordList[0].callRequest.callHistory;
+      const walletHistory = res.recordList[0].walletTransaction.wallet;
+      const giftHistory = res.recordList[0].sendGifts.gifts;
+      const orderHistory = res.recordList[0].orders.order;
       if (chatHistory.length > 0) {
         setChatHistoryData(chatHistory);
       }
@@ -170,34 +170,28 @@ const UserHistory = (props: Props) => {
 
   const CallItem = ({item}: any) => {
     return (
-      <View>
-
-      </View>
-    )
-  }
+      <View />
+    );
+  };
 
   const GiftItem = ({item}: any) => {
     return (
-      <View>
-        
-      </View>
-    )
-  }
+      <View />
+    );
+  };
 
   const OrderItem = ({item}: any) => {
     return (
-      <View>
-        
-      </View>
-    )
-  }
+      <View />
+    );
+  };
 
   const renderItem = ({item}: any) => {
-    if (activeTab === 'Chat') return <ChatItem item={item} />;
-    if (activeTab === 'Call') return <CallItem item={item} />;
-    if (activeTab === 'Gift') return <GiftItem item={item} />;
-    if (activeTab === 'Wallet') return <WalletItem item={item} />;
-    if (activeTab === 'Orders') return <OrderItem item={item} />;
+    if (activeTab === 'Chat') {return <ChatItem item={item} />;}
+    if (activeTab === 'Call') {return <CallItem item={item} />;}
+    if (activeTab === 'Gift') {return <GiftItem item={item} />;}
+    if (activeTab === 'Wallet') {return <WalletItem item={item} />;}
+    if (activeTab === 'Orders') {return <OrderItem item={item} />;}
     return null;
   };
 
@@ -349,7 +343,7 @@ const styles = StyleSheet.create({
     borderRadius: normalize(22),
     fontFamily: Fonts.semibold,
     includeFontPadding: false,
-    lineHeight: normalize(22)
+    lineHeight: normalize(22),
   },
   credit: {
     backgroundColor: '#d4edda',
@@ -364,14 +358,14 @@ const styles = StyleSheet.create({
     color: Colors.blackColor,
     fontFamily: Fonts.semibold,
     includeFontPadding: false,
-    lineHeight: normalize(22)
+    lineHeight: normalize(22),
   },
   date: {
     fontSize: normalize(12),
     color: '#666',
     fontFamily: Fonts.medium,
     includeFontPadding: false,
-    lineHeight: normalize(22)
+    lineHeight: normalize(22),
   },
   orderId: {
     marginLeft: normalize(12),

@@ -11,8 +11,8 @@ export const Fonts = {
     light: 'Nunito-Light',
     medium: 'Nunito-Medium',
     regular: 'Nunito-Regular',
-    semibold: 'Nunito-SemiBold'
-  }
+    semibold: 'Nunito-SemiBold',
+  },
 };
 
 export const Colors = {
@@ -114,5 +114,5 @@ export const homeCategory = [
   { id: 3, name: 'Love & Releationship', image: require('../assets/icons/love_relation.png') },
   { id: 4, name: 'Kids', image: require('../assets/icons/kids.png') },
   { id: 5, name: 'Carrer & Jobs', image: require('../assets/icons/carrer_job.png') },
-  { id: 6, name: 'Education', image: require('../assets/icons/education.png') }
-]
+  { id: 6, name: 'Education', image: require('../assets/icons/education.png') },
+];

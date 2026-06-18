@@ -68,7 +68,7 @@ const ChatScreen = () => {
   const [endFunCall, setEndFunCall] = useState(true);
   const flatListRef = useRef<FlatList>(null);
   const keyboardHeight = useRef(new Animated.Value(0)).current;
-  const [keyboardOpen, setKeyboardOpen] = useState(false)
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
 
   useEffect(() => {
     if (userDetail) {
@@ -90,7 +90,7 @@ const ChatScreen = () => {
       const showListener = Keyboard.addListener(
         Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow',
         e => {
-          setKeyboardOpen(true)
+          setKeyboardOpen(true);
           Animated.timing(keyboardHeight, {
             toValue: e.endCoordinates.height,
             duration: 250,
@@ -100,11 +100,11 @@ const ChatScreen = () => {
           flatListRef.current?.scrollToOffset({offset: 0, animated: true});
         },
       );
-  
+
       const hideListener = Keyboard.addListener(
         Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide',
         () => {
-          setKeyboardOpen(false)
+          setKeyboardOpen(false);
           Animated.timing(keyboardHeight, {
             toValue: 0,
             duration: 250,
@@ -112,14 +112,14 @@ const ChatScreen = () => {
           }).start();
         },
       );
-  
+
       return () => {
         showListener.remove();
         hideListener.remove();
       };
     }, []);
 
-  const formatTime = seconds => {
+  const formatTime = (seconds: any) => {
     const total = Math.max(0, Math.floor(seconds)); // ensure integer & >= 0
     const m = Math.floor(total / 60);
     const s = total % 60;
@@ -127,7 +127,7 @@ const ChatScreen = () => {
   };
 
   useEffect(() => {
-    if (!chatDuration) return; // server/astrologer se mila time
+    if (!chatDuration) {return;} // server/astrologer se mila time
 
     // end time = start time + duration (both in seconds)
     const endTimeUnix = Number(chatStartTime) + Number(chatDuration);
@@ -158,7 +158,7 @@ const ChatScreen = () => {
         totalMin: Number(chatDuration) - secondsLeft,
       };
       console.log(body);
-      if (endFunCall) return;
+      if (endFunCall) {return;}
       setEndFunCall(true);
       const username = userDetail?.name;
       sendChatEndMessage(`${username ? username : 'Guest'} -> Chat Ended`);
@@ -182,7 +182,7 @@ const ChatScreen = () => {
       const lastMessage = messages[0].text;
 
       console.log('last message', lastMessage);
-      if (lastMessage.includes(`Chat Ended`)) {
+      if (lastMessage.includes('Chat Ended')) {
         console.log('Chat Ended found in last message');
         endChat();
       }
@@ -213,7 +213,7 @@ const ChatScreen = () => {
   };
 
   const groupMessagesByDate = (messages: any[]) => {
-    if (!messages || messages.length === 0) return [];
+    if (!messages || messages.length === 0) {return [];}
 
     // Step 1: Sort messages oldest → newest
     const sorted = [...messages].sort(
@@ -249,9 +249,9 @@ const ChatScreen = () => {
     const now = moment();
     const msgDate = moment(date);
 
-    if (msgDate.isSame(now, 'day')) return 'Today';
+    if (msgDate.isSame(now, 'day')) {return 'Today';}
     if (msgDate.isSame(now.clone().subtract(1, 'day'), 'day'))
-      return 'Yesterday';
+      {return 'Yesterday';}
 
     return msgDate.format('MMM D, YYYY');
   };

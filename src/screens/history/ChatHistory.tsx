@@ -37,11 +37,11 @@ const ChatHistory = () => {
 
   // Animated keyboard height
   const keyboardHeight = useRef(new Animated.Value(0)).current;
-  const [keyboardOpen, setKeyboardOpen] = useState(false)
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
 
   // Update user & chat IDs
   useEffect(() => {
-    if (userDetail) setCurrentUserId(userDetail.id.toString());
+    if (userDetail) {setCurrentUserId(userDetail.id.toString());}
     if (route.params) {
       setChatId(chatId.toString());
       setAstrologerId(astrologerId.toString());
@@ -58,7 +58,7 @@ const ChatHistory = () => {
           duration: 250,
           useNativeDriver: false,
         }).start();
-        setKeyboardOpen(true)
+        setKeyboardOpen(true);
         // scroll to bottom when keyboard shows
         flatListRef.current?.scrollToOffset({offset: 0, animated: true});
       },
@@ -72,7 +72,7 @@ const ChatHistory = () => {
           duration: 250,
           useNativeDriver: false,
         }).start();
-        setKeyboardOpen(false)
+        setKeyboardOpen(false);
       },
     );
 
@@ -84,7 +84,7 @@ const ChatHistory = () => {
 
   // Group messages by date
   const groupMessagesByDate = (messages: any[]) => {
-    if (!messages || messages.length === 0) return [];
+    if (!messages || messages.length === 0) {return [];}
 
     const sorted = [...messages].sort(
       (a, b) => moment(a.datetime).valueOf() - moment(b.datetime).valueOf(),
@@ -109,8 +109,8 @@ const ChatHistory = () => {
     const now = moment();
     const msgDate = moment(date);
 
-    if (msgDate.isSame(now, 'day')) return 'Today';
-    if (msgDate.isSame(now.clone().subtract(1, 'day'), 'day')) return 'Yesterday';
+    if (msgDate.isSame(now, 'day')) {return 'Today';}
+    if (msgDate.isSame(now.clone().subtract(1, 'day'), 'day')) {return 'Yesterday';}
 
     return msgDate.format('MMM D, YYYY');
   };

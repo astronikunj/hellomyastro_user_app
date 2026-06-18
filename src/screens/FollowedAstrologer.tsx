@@ -68,14 +68,14 @@ const FollowedAstrologer = () => {
       getFollowedAstrologers();
     });
     return () => {
-      setStartIndex(0)
-      unsubscribe()
-    }
+      setStartIndex(0);
+      unsubscribe();
+    };
   }, [startIndex]);
 
   const onReachEnd = () => {
     console.log('loading moree...');
-    if (canLoadMore) setStartIndex(prev => prev + 5);
+    if (canLoadMore) {setStartIndex(prev => prev + 5);}
   };
 
   const unFollowAstro = (astroId: any) => {

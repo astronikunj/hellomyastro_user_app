@@ -133,7 +133,7 @@ const UserDetail = (props: Props) => {
         <TouchableOpacity
           onPress={() => {
             if (isFollow) {
-              onPressUnfollow(astro?.id)
+              onPressUnfollow(astro?.id);
             } else {
               onPressFollow(astro?.id);
             }

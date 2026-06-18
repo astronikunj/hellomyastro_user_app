@@ -32,7 +32,7 @@ import { updateUser } from '@/redux/slices/authSlice';
 const UserProfile = () => {
   const userDetails = useSelector((state: RootState) => state.auth.user);
   const [getUserDetails] = useGetUserDetailMutation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const inset = useSafeAreaInsets();
   const navigation = useNavigation();
   const {
@@ -58,7 +58,7 @@ const UserProfile = () => {
   const [updateUserProfile, updateUserProfileRes] =
     useUpdateUserProfileMutation();
 
-    console.log(userDetails)
+    console.log(userDetails);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {

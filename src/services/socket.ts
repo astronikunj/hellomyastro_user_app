@@ -1,8 +1,7 @@
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
+import { baseUrl } from '@/constants/constant';
 
-const SOCKET_URL = "https://socket.digikunj.com";
-
-export const socket = io(SOCKET_URL, {
-  transports: ["websocket"],
+export const socket = io(baseUrl, {
+  transports: ['websocket'],
   autoConnect: false,
 });

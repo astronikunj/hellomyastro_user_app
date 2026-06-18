@@ -74,7 +74,7 @@ const UnlimitedAstrologers = () => {
             if (waitTimeDiff < 0) {
               await changeStatus({
                 astrologerId: item.id,
-                status: 'Online',   
+                status: 'Online',
                 waitTime: null,
               });
             }
@@ -103,7 +103,7 @@ const UnlimitedAstrologers = () => {
   return (
     <View style={[styles.container, {paddingTop: inset.top}]}>
       <Header title="Unlimited Chat" />
-      <TouchableOpacity onPress={() => navigation.navigate("unlimitedChat")}>
+      <TouchableOpacity onPress={() => navigation.navigate('unlimitedChat')}>
         <Text style={{color: '#000', fontSize: 15, backgroundColor: 'orange'}}>Go CHat Screen</Text>
       </TouchableOpacity>
       <FlatList

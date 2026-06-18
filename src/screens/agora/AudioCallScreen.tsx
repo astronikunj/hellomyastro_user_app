@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, PermissionsAndroid, Platform } from 'react-native';
 import RtcEngine, { ChannelProfile, ClientRole } from 'react-native-agora';

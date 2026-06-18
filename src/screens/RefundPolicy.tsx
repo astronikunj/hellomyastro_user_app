@@ -14,10 +14,10 @@ import {
 } from 'react-native';
 
 const RefundPolicyScreen = () => {
-	const navigation = useNavigation()
+	const navigation = useNavigation();
   return (
     <CustomSafeArea>
-			<Header title='Refund & Cancellation' onPress={() => navigation.goBack()} />
+			<Header title="Refund & Cancellation" onPress={() => navigation.goBack()} />
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.content}>

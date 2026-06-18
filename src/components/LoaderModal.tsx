@@ -1,8 +1,8 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import React from "react";
-import Modal from "react-native-modal";
-import { Colors, Fonts, Sizes } from "@/assets";
-import { normalize } from "@/utils/normalize";
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import Modal from 'react-native-modal';
+import { Colors, Fonts, Sizes } from '@/assets';
+import { normalize } from '@/utils/normalize';
 
 type Props = {
 	loading: boolean;
@@ -25,20 +25,20 @@ export default LoaderModal;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 12,
     backgroundColor: Colors.whiteColor,
     paddingHorizontal: Sizes.xmedium,
     paddingVertical: normalize(14),
     borderRadius: normalize(24),
-    width: "80%",
-    alignSelf: "center",
+    width: '80%',
+    alignSelf: 'center',
   },
   text: {
     color: Colors.blackColor,
     fontFamily: Fonts.regular,
     fontSize: normalize(14),
-    includeFontPadding: false
+    includeFontPadding: false,
   },
 });

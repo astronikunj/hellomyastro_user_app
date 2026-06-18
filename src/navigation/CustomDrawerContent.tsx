@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather'
+import Feather from 'react-native-vector-icons/Feather';
 import {useSelector, useDispatch} from 'react-redux';
 import {logout} from '@/redux/slices/authSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -110,7 +110,7 @@ const CustomDrawerContent = () => {
           onPress={() => {
             if (isLoggedIn) {
               // navigation.navigate('wallet');
-              Alert.alert('Message', 'This service is not available right now!')
+              Alert.alert('Message', 'This service is not available right now!');
             } else {
               navigation.reset({index: 0, routes: [{name: 'login'}]});
             }

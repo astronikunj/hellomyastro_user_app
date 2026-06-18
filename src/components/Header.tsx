@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.semibold,
     includeFontPadding: false,
     paddingLeft: 10,
-    maxWidth: normalize(250)
+    maxWidth: normalize(250),
   },
 });

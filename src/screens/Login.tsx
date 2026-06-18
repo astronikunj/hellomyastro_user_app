@@ -81,7 +81,7 @@ export default function LoginScreen() {
         if (res.status == 200) {
           navigation.navigate('verify', {
             phoneNumber: phoneNumberRef.current,
-            title: `Verify Phone`,
+            title: 'Verify Phone',
             loginTypeValue: `+91-${phoneNumberRef.current}`,
             loginOTP: res.otp,
           });
@@ -102,7 +102,7 @@ export default function LoginScreen() {
         return;
       }
       navigation.navigate('verify', {
-        title: `Verify Email`,
+        title: 'Verify Email',
         loginTypeValue: email,
       });
     }
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     fontSize: normalize(Sizes.xmedium),
     marginLeft: normalize(6),
     includeFontPadding: false,
-    color: Colors.blackColor
+    color: Colors.blackColor,
   },
   inputSeperator: {
     borderLeftWidth: 0.5,

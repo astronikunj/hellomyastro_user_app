@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from "react-native";
-import React from "react";
-import { Colors, Fonts, Sizes } from "@/assets";
-import { normalize, verticalScale } from "@/utils/normalize";
+import { StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
+import React from 'react';
+import { Colors, Fonts, Sizes } from '@/assets';
+import { normalize, verticalScale } from '@/utils/normalize';
 
 type Props = {
   label: string;
@@ -26,19 +26,19 @@ export default CommonButton;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.colorOrange,//"#e52d27"
-    width: "95%",
+    width: '95%',
     marginVertical: verticalScale(Sizes.base),
     padding: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 24,
     // elevation: 2,
   },
   text: {
     fontSize: normalize(16),
-    color: "#fff",
+    color: '#fff',
     fontFamily: Fonts.semibold,
     textAlign: 'center',
-    includeFontPadding: false
+    includeFontPadding: false,
   },
 });

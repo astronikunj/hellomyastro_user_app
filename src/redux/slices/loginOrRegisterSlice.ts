@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface LoginRegisterState {
 	loginWithMobile: boolean;
@@ -9,9 +9,9 @@ export interface LoginRegisterState {
 
 const initialState: LoginRegisterState = {
 	loginWithMobile: true,
-	userMobile: "",
-	userEmail: ""
-}
+	userMobile: '',
+	userEmail: '',
+};
 
 export const loginRegisterSlice = createSlice({
   name: 'loginOrRegister',
@@ -27,9 +27,9 @@ export const loginRegisterSlice = createSlice({
       state.userEmail = action.payload;
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { updateLoginType, setUserMobile, setUserEmail } = loginRegisterSlice.actions
+export const { updateLoginType, setUserMobile, setUserEmail } = loginRegisterSlice.actions;
 
-export default loginRegisterSlice.reducer
+export default loginRegisterSlice.reducer;

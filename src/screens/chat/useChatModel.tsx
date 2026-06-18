@@ -19,7 +19,7 @@ const useChatViewModel = () => {
   useEffect(() => {
     console.log('chatId:', chatId, 'astrologerId:', astrologerId, 'currentUserId:', currentUserId);
     // Guard: do not subscribe until all IDs are set
-    if (!chatId || !astrologerId || !currentUserId) return;
+    if (!chatId || !astrologerId || !currentUserId) {return;}
 
     const unsubscribe = firestore()
       .collection('chats')
@@ -52,7 +52,7 @@ const useChatViewModel = () => {
   }, [chatId, currentUserId, astrologerId]);
 
   const sendMessage = async () => {
-    if (messageText.trim().length === 0) return;
+    if (messageText.trim().length === 0) {return;}
 
     const chatData = {
       message: messageText,

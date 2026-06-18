@@ -7,10 +7,10 @@ import React from 'react';
 import {ScrollView, Text, View, StyleSheet} from 'react-native';
 
 const TermsAndConditionsScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <CustomSafeArea>
-      <Header title='Terms & Conditions' onPress={() => navigation.goBack()} />
+      <Header title="Terms & Conditions" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <Text style={styles.content}>
           The following outlines the terms and conditions under which we provide

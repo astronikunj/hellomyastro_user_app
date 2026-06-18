@@ -22,7 +22,7 @@ const InputField = (props: Props) => {
   return (
     <Pressable onPress={props.onPressIn}>
       {/* <Text style={styles.label}>{props.label}</Text> */}
-      <ThemedText type='default'>
+      <ThemedText type="default">
         {props.label}
       </ThemedText>
       <View
@@ -34,7 +34,7 @@ const InputField = (props: Props) => {
           backgroundColor: Colors.whiteColor,
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
         }}>
         <TextInput
           value={props.value}
@@ -44,8 +44,7 @@ const InputField = (props: Props) => {
           style={styles.inputStyle}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          editable={props.editable}
-          disabled={props.disabled}
+          editable={props.editable !== false && !props.disabled}
         />
         {props?.rightIconName && (
           <View style={{
@@ -55,7 +54,7 @@ const InputField = (props: Props) => {
             paddingHorizontal: normalize(14),
             borderTopRightRadius: 8,
             borderBottomRightRadius: 8,
-            backgroundColor: '#fffce6'
+            backgroundColor: '#fffce6',
           }}>
             <Icons
               name={props?.rightIconName}

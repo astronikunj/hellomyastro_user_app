@@ -21,20 +21,26 @@ const Splash = (props: Props) => {
     }, 2000);
   }, []);
   const checkLoginStatus = async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (token) {
-      dispatch(loginSuccess({user: {}, token}));
-      const res = await getUserDetails('').unwrap();
-      console.log(res);
-      if (res.status == 200) {
-        dispatch(updateUser({user: res.userDetails}));
-        navigation.replace('drawer', {screen: 'home'});
-      } else if ((res.status = -401)) {
-        navigation.replace('login');
+    try {
+      const token = await AsyncStorage.getItem('token');
+      if (token) {
+        dispatch(loginSuccess({user: {}, token}));
+        const res = await getUserDetails('').unwrap();
+        console.log(res);
+        if (res.status === true || res.status === 200) {
+          dispatch(updateUser({user: res.userDetails}));
+          navigation.replace('drawer', {screen: 'home'});
+        } else if (res.status === -401 || res.status === 401) {
+          navigation.replace('login');
+        } else {
+          Alert.alert('Warning!', 'Something went wrong. Please try again.');
+          navigation.replace('login');
+        }
       } else {
-        Alert.alert('Warning!', 'Something wrong try after sometimes.');
+        navigation.replace('login');
       }
-    } else {
+    } catch (error) {
+      console.log('Login check error, redirecting to login:', error);
       navigation.replace('login');
     }
   };
@@ -82,6 +88,6 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.bold,
     marginTop: 20,
     color: Colors.blackColor,
-    includeFontPadding: false
+    includeFontPadding: false,
   },
 });

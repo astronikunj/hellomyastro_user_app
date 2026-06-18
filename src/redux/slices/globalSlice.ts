@@ -19,7 +19,7 @@ const initialState: GlobalState = {
   isHideAd: false,
   acceptChatRequestPopUp: false,
   acceptChatRquestItem: null,
-  chatStartTime: null
+  chatStartTime: null,
 };
 
 export const globalSlice = createSlice({
@@ -33,20 +33,20 @@ export const globalSlice = createSlice({
       state.walletAmount = action.payload;
     },
     updateFreeSessionBanner: (state) => {
-      state.showFreeSessionBanner = false
+      state.showFreeSessionBanner = false;
     },
     updateIsHideAd: (state) => {
-      state.isHideAd = true
+      state.isHideAd = true;
     },
     updateAcceptChatRequestPopUp: (state, action: PayloadAction<boolean>) => {
-      state.acceptChatRequestPopUp = action.payload
+      state.acceptChatRequestPopUp = action.payload;
     },
     updateAcceptChatRequestItem: (state, action: PayloadAction<any>) => {
-      state.acceptChatRquestItem = action.payload
+      state.acceptChatRquestItem = action.payload;
     },
     updateChatStartTime: (state, action: PayloadAction<any>) => {
-      state.chatStartTime = action.payload
-    }
+      state.chatStartTime = action.payload;
+    },
   },
 });
 

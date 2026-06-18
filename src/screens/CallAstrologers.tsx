@@ -32,7 +32,7 @@ const CallAstroScreen = (props: Props) => {
   const [getCategories] = useActiveAstrologerCategoryMutation();
   const [changeStatus] = useChangeCallStatusMutation();
   const [checkUserAlreadyInCallReq] = useCheckUserAlreadyInCallReqMutation();
-  const [callWarning, setCallWarning] = useState(false)
+  const [callWarning, setCallWarning] = useState(false);
   const route = useRoute();
   const {category} = (route.params as any) || '';
   const {isAuthenticated: isLoggedIn, user} = useSelector(

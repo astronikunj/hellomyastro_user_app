@@ -1,12 +1,12 @@
-import { Dimensions, StyleSheet, View, Image } from "react-native";
-import React from "react";
-import Carousel from "pinar";
-import { normalize } from "@/utils/normalize";
-import { Sizes } from "@/assets";
-import FastImage, { ResizeMode } from "react-native-fast-image";
-import { imgBaseurl } from "@/constants/constant";
+import { Dimensions, StyleSheet, View, Image } from 'react-native';
+import React from 'react';
+import Carousel from 'pinar';
+import { normalize } from '@/utils/normalize';
+import { Sizes } from '@/assets';
+import FastImage, { ResizeMode } from 'react-native-fast-image';
+import { imgBaseurl } from '@/constants/constant';
 
-const height = Dimensions.get("screen").height;
+const height = Dimensions.get('screen').height;
 
 type Props = {
   images: any;
@@ -16,7 +16,7 @@ type Props = {
 
 const CarouselView = (props: Props) => {
   const { images, contentFit, crouselContainerStyle } = props;
-  console.log(images)
+  console.log(images);
   return (
     <View style={[styles.carouselContainer, { ...crouselContainerStyle }]}>
       <Carousel
@@ -33,7 +33,7 @@ const CarouselView = (props: Props) => {
             key={index}
             style={styles.image}
             source={{uri: `${imgBaseurl}${item.bannerImage}`}}
-            resizeMode={"cover"}
+            resizeMode={'cover'}
           />
         ))}
       </Carousel>
@@ -45,17 +45,17 @@ export default CarouselView;
 
 const styles = StyleSheet.create({
   image: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
     borderRadius: Sizes.small,
   },
   carousel: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
   },
   carouselContainer: {
     height: normalize(130),
-    width: "100%",
-    alignSelf: "center",
+    width: '100%',
+    alignSelf: 'center',
   },
 });

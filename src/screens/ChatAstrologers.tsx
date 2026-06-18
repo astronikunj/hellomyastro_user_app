@@ -41,7 +41,7 @@ const ChatsAstrologer = (props: Props) => {
   const [categories, setCategories] = useState<any[]>([]);
   const [refreshing, setRefreshing] = useState(false);
   const {chatFilter} = useSelector((state: RootState) => state.global);
-  const [chatWarning, setChatWarning] = useState(false)
+  const [chatWarning, setChatWarning] = useState(false);
   React.useEffect(() => {
     getCategories({})
       .unwrap()
@@ -69,7 +69,7 @@ const ChatsAstrologer = (props: Props) => {
       const isEligible =
         item.charge * 5 <= userWalletAmount || item.isFreeAvailable;
       if (item.isFreeAvailable && userWalletAmount == 0) {
-        setChatWarning(true)
+        setChatWarning(true);
         return;
       }
       if (!isEligible) {
@@ -146,7 +146,7 @@ const ChatsAstrologer = (props: Props) => {
       .unwrap()
       .then(res => {
         setAstroData(res?.recordList || []);
-        setRefreshing(false)
+        setRefreshing(false);
       })
       .catch(err => {
         console.error('Error fetching astrologers data', err);
@@ -168,7 +168,7 @@ const ChatsAstrologer = (props: Props) => {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    updateAstroCategoryData()
+    updateAstroCategoryData();
   }, []);
 
   return (

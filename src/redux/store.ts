@@ -1,11 +1,11 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import loginRegisterReducer from "../redux/slices/loginOrRegisterSlice";
-import { astroService } from "./services/astroService";
-import { productService } from "./services/productService";
-import { setupListeners } from "@reduxjs/toolkit/query";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import loginRegisterReducer from '../redux/slices/loginOrRegisterSlice';
+import { astroService } from './services/astroService';
+import { productService } from './services/productService';
+import { setupListeners } from '@reduxjs/toolkit/query';
 import authSliceReducer from '../redux/slices/authSlice';
 import globalSliceReducer from '../redux/slices/globalSlice';
-import { authService } from "./services/authService";
+import { authService } from './services/authService';
 
 export const store = configureStore({
   reducer: {
@@ -17,7 +17,7 @@ export const store = configureStore({
     [authService.reducerPath]: authService.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(astroService.middleware, productService.middleware),
+    getDefaultMiddleware().concat(astroService.middleware, productService.middleware, authService.middleware),
 });
 
 setupListeners(store.dispatch);

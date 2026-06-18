@@ -8,29 +8,29 @@ import {
   View,
 	Image,
 	ImageBackground,
-} from "react-native";
-import React from "react";
-import { Colors, Fonts } from "@/assets";
+} from 'react-native';
+import React from 'react';
+import { Colors, Fonts } from '@/assets';
 import {
   useGetLatestProductMutation,
   useGetProductCategoriesMutation,
-} from "@/redux/services/productService";
-import { imgBaseurl } from "@/constants/constant";
-import { normalize, verticalScale } from "@/utils/normalize";
-import LoaderModal from "@/components/LoaderModal";
-import { ThemedText } from "@/components/ThemedText";
-import Spacing from "@/components/Spacing";
-import LinearGradient from "react-native-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import Header from "@/components/Header";
+} from '@/redux/services/productService';
+import { imgBaseurl } from '@/constants/constant';
+import { normalize, verticalScale } from '@/utils/normalize';
+import LoaderModal from '@/components/LoaderModal';
+import { ThemedText } from '@/components/ThemedText';
+import Spacing from '@/components/Spacing';
+import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import Header from '@/components/Header';
 type Props = {};
 
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get('window');
 
 const RemediesScreen = (props: Props) => {
   const navigation = useNavigation<any>();
-  const inset = useSafeAreaInsets()
+  const inset = useSafeAreaInsets();
   const [categories, setCategories] = React.useState<any>([]);
   const [latestProduct, setLatestProduct] = React.useState<any>([]);
   const [getProductCategories, getProductCategoriesRes] =
@@ -44,7 +44,7 @@ const RemediesScreen = (props: Props) => {
       }).unwrap();
       setCategories(response?.recordList);
     } catch (error) {
-      console.error("Error fetching product categories:", error);
+      console.error('Error fetching product categories:', error);
     }
   };
   const getLatestProductData = async () => {
@@ -55,7 +55,7 @@ const RemediesScreen = (props: Props) => {
       }).unwrap();
       setLatestProduct(response?.recordList);
     } catch (error) {
-      console.error("Error fetching latest product:", error);
+      console.error('Error fetching latest product:', error);
     }
   };
   React.useEffect(() => {
@@ -66,7 +66,7 @@ const RemediesScreen = (props: Props) => {
     return (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("shopping", { categoryId: item?.id, name: item?.name })
+          navigation.navigate('shopping', { categoryId: item?.id, name: item?.name })
         }
         activeOpacity={0.8}
         key={item?.id}
@@ -103,7 +103,7 @@ const RemediesScreen = (props: Props) => {
             return (
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate("productDetail", { productId: item?.id })
+                  navigation.navigate('productDetail', { productId: item?.id })
                 }
                 activeOpacity={0.8}
                 style={styles.productContainer}
@@ -116,13 +116,13 @@ const RemediesScreen = (props: Props) => {
                 >
                   <LinearGradient
                     // Background Linear Gradient
-                    colors={["transparent", "rgba(0,0,0,0.8)"]}
-                    style={{ height: "100%" }}
+                    colors={['transparent', 'rgba(0,0,0,0.8)']}
+                    style={{ height: '100%' }}
                   >
                     <View
                       style={{
                         flex: 1,
-                        justifyContent: "flex-end",
+                        justifyContent: 'flex-end',
                         padding: 10,
                       }}
                     >
@@ -178,8 +178,8 @@ export default RemediesScreen;
 const styles = StyleSheet.create({
   categoryContainer: {
     backgroundColor: Colors.whiteColor,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: verticalScale(8),
     height: width * 0.3,
     width: width * 0.3,
@@ -192,18 +192,18 @@ const styles = StyleSheet.create({
     height: width * 0.2,
     width: width * 0.2,
     borderRadius: width * 0.2,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   categoryName: {
     color: Colors.blackColor,
     fontSize: normalize(12),
     fontFamily: Fonts.regular,
-    fontWeight: "500",
+    fontWeight: '500',
     maxWidth: width * 0.3,
   },
   imageStyle: {
-    height: "100%",
-    width: "100%",
+    height: '100%',
+    width: '100%',
   },
   headingText: {
     paddingStart: normalize(8),
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     fontSize: normalize(16),
     color: Colors.blackColor,
     fontFamily: Fonts.regular,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   scrollContainer: {
     gap: 10,
@@ -222,6 +222,6 @@ const styles = StyleSheet.create({
     height: width * 0.55,
     width: width * 0.4,
     borderRadius: normalize(12),
-    overflow: "hidden",
+    overflow: 'hidden',
   },
 });

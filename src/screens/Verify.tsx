@@ -15,6 +15,7 @@ import CommonButton from '@/components/CommonButton';
 import {initializeFireBaseApp, ToastMessage} from '@/utils/helper';
 import {
   useVerifyOTPMutation,
+  useSendOTPMutation,
 } from '@/redux/services/authService';
 import LoaderModal from '@/components/LoaderModal';
 import {loginSuccess} from '@/redux/slices/authSlice';
@@ -32,6 +33,7 @@ const VerifyOTP = (props: Props) => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const [verifyOTP, verifyOTPRes] = useVerifyOTPMutation();
+  const [sendOTP, sendOTPRes] = useSendOTPMutation();
   const route = useRoute();
   const {title, loginTypeValue, phoneNumber, loginOTP} =
     route.params as {
@@ -41,19 +43,16 @@ const VerifyOTP = (props: Props) => {
       loginOTP?: number;
     };
   const [secondsLeft, setSecondsLeft] = useState(60);
+  const [currentOtp, setCurrentOtp] = useState<number | undefined>(loginOTP);
   const [isResendEnabled, setIsResendEnabled] = useState(false);
   const ref1 = useRef<TextInput>(null);
   const ref2 = useRef<TextInput>(null);
   const ref3 = useRef<TextInput>(null);
   const ref4 = useRef<TextInput>(null);
-  const ref5 = useRef<TextInput>(null);
-  const ref6 = useRef<TextInput>(null);
   const [otp1, setOtp1] = useState('');
   const [otp2, setOtp2] = useState('');
   const [otp3, setOtp3] = useState('');
   const [otp4, setOtp4] = useState('');
-  const [otp5, setOtp5] = useState('');
-  const [otp6, setOtp6] = useState('');
   const [fcmToken, setFcmToken] = useState<any>('');
 
   useEffect(() => {
@@ -68,7 +67,7 @@ const VerifyOTP = (props: Props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (ref1.current !== null) ref1.current.focus();
+      if (ref1.current !== null) {ref1.current.focus();}
     }, 500);
   }, []);
 
@@ -96,8 +95,8 @@ const VerifyOTP = (props: Props) => {
   }, [title]);
 
   const handleLoggedIn = async () => {
-    const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-    if (otp.length < 6) {
+    const otp = otp1 + otp2 + otp3 + otp4;
+    if (otp.length < 4) {
       ToastMessage('Please enter a valid OTP');
       return;
     }
@@ -126,7 +125,7 @@ const VerifyOTP = (props: Props) => {
       if (response.success) {
         ToastMessage('Logged in successfully');
         await AsyncStorage.setItem('token', response.token);
-        await AsyncStorage.setItem('userId', JSON.stringify(response.userDetails?.id) )
+        await AsyncStorage.setItem('userId', JSON.stringify(response.userDetails?.id) );
         dispatch(
           loginSuccess({user: response.userDetails, token: response.token}),
         );
@@ -157,12 +156,47 @@ const VerifyOTP = (props: Props) => {
           }),
         );
       }
-    } catch(error: any){
-      console.log('ERROR::', error)
+    } catch (error: any) {
+      console.log('ERROR::', error);
       const errorData = error?.data;
-      ToastMessage(errorData?.message)
+      ToastMessage(errorData?.message);
     }
-  }
+  };
+
+  const handleResendOTP = async () => {
+    if (!phoneNumber) {
+      ToastMessage('Phone number is missing');
+      return;
+    }
+    try {
+      const data = {
+        contactNo: phoneNumber,
+        countryCode: '91',
+        type: 'P',
+      };
+      const response = await sendOTP(data).unwrap();
+      if (response.status === 200) {
+        ToastMessage('OTP resent successfully');
+        setCurrentOtp(response.otp);
+        setSecondsLeft(60);
+        // Clear previous input fields
+        setOtp1('');
+        setOtp2('');
+        setOtp3('');
+        setOtp4('');
+        setTimeout(() => {
+          ref1.current?.focus();
+        }, 300);
+      }
+    } catch (error: any) {
+      console.log('Resend Error::', error);
+      const errorMsg =
+        error?.data?.message ||
+        error?.message ||
+        'Failed to resend OTP. Please try again.';
+      ToastMessage(errorMsg);
+    }
+  };
 
   return (
     <>
@@ -182,7 +216,7 @@ const VerifyOTP = (props: Props) => {
             value={otp1}
             onChangeText={text => {
               setOtp1(text);
-              ref2.current?.focus();
+              if (text.length > 0) ref2.current?.focus();
             }}
           />
           <TextInput
@@ -193,7 +227,12 @@ const VerifyOTP = (props: Props) => {
             value={otp2}
             onChangeText={text => {
               setOtp2(text);
-              ref3.current?.focus();
+              if (text.length > 0) ref3.current?.focus();
+            }}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace' && otp2 === '') {
+                ref1.current?.focus();
+              }
             }}
           />
           <TextInput
@@ -204,7 +243,12 @@ const VerifyOTP = (props: Props) => {
             value={otp3}
             onChangeText={text => {
               setOtp3(text);
-              ref4.current?.focus();
+              if (text.length > 0) ref4.current?.focus();
+            }}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace' && otp3 === '') {
+                ref2.current?.focus();
+              }
             }}
           />
           <TextInput
@@ -215,28 +259,11 @@ const VerifyOTP = (props: Props) => {
             value={otp4}
             onChangeText={text => {
               setOtp4(text);
-              ref5.current?.focus();
             }}
-          />
-          <TextInput
-            ref={ref5}
-            style={styles.inputStyle}
-            keyboardType="number-pad"
-            maxLength={1}
-            value={otp5}
-            onChangeText={text => {
-              setOtp5(text);
-              ref6.current?.focus();
-            }}
-          />
-          <TextInput
-            ref={ref6}
-            style={styles.inputStyle}
-            keyboardType="number-pad"
-            maxLength={1}
-            value={otp6}
-            onChangeText={text => {
-              setOtp6(text);
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace' && otp4 === '') {
+                ref3.current?.focus();
+              }
             }}
           />
         </View>
@@ -254,8 +281,8 @@ const VerifyOTP = (props: Props) => {
           maxLength={6}
         /> */}
         <Spacing height={Sizes.small} />
-        {loginOTP && (
-          <Text style={{textAlign: 'center', color: '#000'}}>{loginOTP}</Text>
+        {currentOtp && (
+          <Text style={{textAlign: 'center', color: '#000'}}>{currentOtp}</Text>
         )}
         <CommonButton
           label="Verify OTP"
@@ -265,7 +292,7 @@ const VerifyOTP = (props: Props) => {
           buttonStyle={styles.buttonStyle}
         />
         {isResendEnabled ? (
-          <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
+          <TouchableOpacity activeOpacity={0.7} onPress={handleResendOTP}>
             <ThemedText type="link" style={styles.linkStyle}>
               Resend OTP
             </ThemedText>
@@ -275,7 +302,7 @@ const VerifyOTP = (props: Props) => {
             {`Resend OTP (00:${secondsLeft} s)`}
           </ThemedText>
         )}
-        <LoaderModal loading={verifyOTPRes?.isLoading} />
+        <LoaderModal loading={verifyOTPRes?.isLoading || sendOTPRes?.isLoading} />
       </SafeAreaView>
     </>
   );

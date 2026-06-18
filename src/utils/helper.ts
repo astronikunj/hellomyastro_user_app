@@ -30,8 +30,9 @@ export const extractTimeWithAMPM = (timestamp: Date) => {
   return `${hours}:${minutes} ${ampm}`;
 };
 
-export const ToastMessage = (message: string) => {
-  return Toast.show(message, Toast.LONG);
+export const ToastMessage = (message: any) => {
+  const finalMessage = typeof message === 'string' ? message : String(message || 'An error occurred');
+  return Toast.show(finalMessage, Toast.LONG);
 };
 
 export const sendMessage = async (

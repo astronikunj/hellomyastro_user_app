@@ -1,5 +1,5 @@
-import { baseUrl } from "@/constants/constant";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseUrl } from '@/constants/constant';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const authService = createApi({
 	reducerPath: 'authService',
@@ -9,30 +9,30 @@ export const authService = createApi({
 	endpoints: (builder) => ({
 		loginAppUser: builder.mutation({
 			query: (data) => ({
-				url: '/loginAppUser',
+				url: '/auth/loginAppUser',
 				method: 'POST',
-				body: data
-			})
+				body: data,
+			}),
 		}),
 		sendOTP: builder.mutation({
 			query: (data) => ({
-				url: 'sendOtp',
+				url: '/auth/sendOtp',
 				method: 'POST',
-				body: data
-			})
+				body: data,
+			}),
 		}),
 		verifyOTP: builder.mutation({
 			query: (data) => ({
-				url: 'verifyOtp',
+				url: '/auth/verifyOtp',
 				method: 'POST',
-				body: data
-			})
-		})
-	})
-})
+				body: data,
+			}),
+		}),
+	}),
+});
 
 export const {
 	useLoginAppUserMutation,
 	useSendOTPMutation,
 	useVerifyOTPMutation,
-} = authService
+} = authService;

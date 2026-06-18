@@ -114,8 +114,8 @@ const ShoppingScreen = (props: Props) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingHorizontal: normalize(10)}}
         ListEmptyComponent={() => {
-          if (getProductByCategoryRes?.isLoading) return null;
-          if (getProductByCategoryRes?.error) return null;
+          if (getProductByCategoryRes?.isLoading) {return null;}
+          if (getProductByCategoryRes?.error) {return null;}
           return (
             <View
               style={{

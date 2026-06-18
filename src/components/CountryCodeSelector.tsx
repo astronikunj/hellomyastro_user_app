@@ -1,8 +1,8 @@
 // CountryCodeSelector.tsx
-import { normalize } from "@/utils/normalize";
-import { Colors, Fonts } from "@/assets";
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import React, { useState } from "react";
+import { normalize } from '@/utils/normalize';
+import { Colors, Fonts } from '@/assets';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -11,31 +11,31 @@ import {
   TextInput,
   FlatList,
   StyleSheet,
-} from "react-native";
+} from 'react-native';
 import {
   Country,
   CountryCode,
   FlagType,
   getAllCountries,
   getCallingCode,
-} from "react-native-country-picker-modal";
-import { Flag } from "react-native-country-picker-modal";
+} from 'react-native-country-picker-modal';
+import { Flag } from 'react-native-country-picker-modal';
 
 export default function CountryCodeSelector() {
-  const [countryCode, setCountryCode] = useState<CountryCode>("IN");
+  const [countryCode, setCountryCode] = useState<CountryCode>('IN');
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [filterCountryData, setFilterCountryData] = useState<Country[]>([]);
 
   const getCountries = async () => {
-    const countries = await getAllCountries("flat" as FlagType);
+    const countries = await getAllCountries('flat' as FlagType);
 
-    if (searchQuery !== "") {
+    if (searchQuery !== '') {
       const filteredCountries = countries?.filter((country: any) =>
         country.name?.toLowerCase().includes(searchQuery.toLowerCase())
       );
-      console.log("filter data", filteredCountries);
+      console.log('filter data', filteredCountries);
       setFilterCountryData(filteredCountries);
     } else {
       setFilterCountryData(countries);
@@ -65,7 +65,7 @@ export default function CountryCodeSelector() {
   return (
     <View style={styles.container}>
       <Pressable style={styles.selector} onPress={() => {
-        setModalVisible(true)
+        setModalVisible(true);
       }}>
         {selectedCountry ? (
           <>
@@ -90,7 +90,7 @@ export default function CountryCodeSelector() {
             flexDirection: 'row',
             alignItems: 'center',
             marginHorizontal: 16,
-            gap: 12
+            gap: 12,
           }}>
             <Ionicons name="arrow-back-sharp" size={24} color={'#000'} onPress={() => setModalVisible(false)}  />
             <TextInput
@@ -105,7 +105,7 @@ export default function CountryCodeSelector() {
             data={filterCountryData}
             keyExtractor={(item) => item.cca2}
             renderItem={renderCountry}
-            style={{ backgroundColor: "#fff", padding: 20 }}
+            style={{ backgroundColor: '#fff', padding: 20 }}
           />
         </View>
       </Modal>
@@ -115,14 +115,14 @@ export default function CountryCodeSelector() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 0
+    paddingHorizontal: 0,
   },
   selector: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     // backgroundColor: "#eee",
     borderRadius: 10,
-    paddingHorizontal: 8
+    paddingHorizontal: 8,
   },
   selectedText: {
     fontSize: 16,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     fontSize: normalize(14),
-    backgroundColor: "#f1f1f1",
+    backgroundColor: '#f1f1f1',
     borderRadius: 24,
     marginVertical: 16,
     elevation: 5,
@@ -146,28 +146,28 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
   row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingVertical: 12,
     borderBottomWidth: 0.5,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
   },
   rowLeft: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 10,
   },
   countryText: {
     fontSize: normalize(14),
-    color: "#000",
+    color: '#000',
     fontFamily: Fonts.medium,
-    includeFontPadding: false
+    includeFontPadding: false,
   },
   callingCode: {
     fontSize: normalize(14),
-    color: "#444",
+    color: '#444',
     fontFamily: Fonts.medium,
-    includeFontPadding: false
+    includeFontPadding: false,
   },
 });

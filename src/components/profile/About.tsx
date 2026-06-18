@@ -8,7 +8,7 @@ type Props = {
 };
 
 const About = (props: Props) => {
-	
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>About Me</Text>

@@ -1,14 +1,14 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-import Modal from "react-native-modal";
-import { Colors, Fonts, Sizes } from "@/assets";
-import { ThemedText } from "./ThemedText";
-import { normalize, verticalScale } from "@/utils/normalize";
-import Spacing from "./Spacing";
-import { useTranslation } from "react-i18next";
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {LANGUAGE_PREFERENCE_KEY} from '@/i18n'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import Modal from 'react-native-modal';
+import { Colors, Fonts, Sizes } from '@/assets';
+import { ThemedText } from './ThemedText';
+import { normalize, verticalScale } from '@/utils/normalize';
+import Spacing from './Spacing';
+import { useTranslation } from 'react-i18next';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LANGUAGE_PREFERENCE_KEY} from '@/i18n';
 
 type Props = {
   closeModal: Function;
@@ -36,7 +36,7 @@ const SelectLanguage = (props: Props) => {
           />
           <ThemedText
             type="subtitle"
-            style={{ color: Colors.textColor, textAlign: "center" }}
+            style={{ color: Colors.blackColor, textAlign: 'center' }}
           >
             Choose your app language
           </ThemedText>
@@ -86,15 +86,15 @@ const styles = StyleSheet.create({
     borderRadius: Sizes.base,
   },
   boxContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
   languageContainer: {
-    alignItems: "center",
+    alignItems: 'center',
     borderWidth: 1,
     paddingVertical: verticalScale(Sizes.small),
-    width: "32%",
+    width: '32%',
     borderRadius: Sizes.base,
   },
   englishName: {
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.regular,
   },
   closeIcon: {
-    position: "absolute",
+    position: 'absolute',
     right: normalize(Sizes.base),
     top: normalize(Sizes.base),
   },

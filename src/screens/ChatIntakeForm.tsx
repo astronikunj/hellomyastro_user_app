@@ -443,7 +443,7 @@ This is an automated message to confirm that chat has started.`,
                 astrologerId: astrologerId,
                 isFreeSession: true,
                 chat_duration: freeChatDuration,
-                chatType: 'minutes'
+                chatType: 'minutes',
               });
               ToastMessage(
                 'You have successfully sent chat request to the astrologer.',
@@ -544,7 +544,7 @@ This is an automated message to confirm that chat has started.`,
               astrologerId: astrologerId,
               isFreeSession: false,
               chat_duration: timeSelection[chatSelectTime] * 60,
-              chatType: 'minutes'
+              chatType: 'minutes',
             });
             ToastMessage(
               'You have successfully sent chat request to the astrologer.',
@@ -554,7 +554,7 @@ This is an automated message to confirm that chat has started.`,
         }
       } else {
         ToastMessage(
-          `You don't have enough balance in your wallet. Please recharge your wallet.`,
+          'You don\'t have enough balance in your wallet. Please recharge your wallet.',
         );
         navigation.navigate('wallet', {
           isFromChatIntakeForm: true,

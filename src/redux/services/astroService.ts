@@ -11,282 +11,282 @@ export const astroService = createApi({
 				headers.set('Authorization', `Bearer ${token}`);
 			}
 			return headers;
-		}
+		},
 	}),
 	endpoints: (builder) => ({
 		getAstrologers: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getAstrologer',
+				url: '/users/getAstrologer',
 				method: 'POST',
-				body: bodyContent
+				body: bodyContent,
 			}),
 		}),
 		addIntakeDetail: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/chatRequest/addIntakeForm',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getUserDetail: builder.mutation({
 			query: () => ({
-				url: '/getUserdetails',
+				url: '/users/getUserdetails',
 				method: 'POST',
-				body: {}
-			})
+				body: {},
+			}),
 		}),
 		getIntakeForm: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/chatRequest/getIntakeForm',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		checkUserAlreadyInChatReq: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/checkChatSessionAvailable',
+				url: '/users/checkChatSessionAvailable',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		checkUserAlreadyInCallReq: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/checkCallSessionAvailable',
+				url: '/users/checkCallSessionAvailable',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getAvailability: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getAstrologerAvailability',
+				url: '/users/getAstrologerAvailability',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		searchAstrologer: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/searchAstro',
+				url: '/users/searchAstro',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getPaymentAmount: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getRechargeAmount',
+				url: '/users/getRechargeAmount',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		changeStatus: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/addStatus',
+				url: '/users/addStatus',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		changeCallStatus: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/addCallStatus',
+				url: '/users/addCallStatus',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		checkFreeSession: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/checkFreeSessionAvailable',
+				url: '/users/checkFreeSessionAvailable',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		sendAstrologerChatRequest: builder.mutation({
 			query: (bodyRequest) => ({
 				url: '/chatRequest/add',
 				method: 'POST',
-				body: bodyRequest
-			})
+				body: bodyRequest,
+			}),
 		}),
 		sendAstrologerCallRequest: builder.mutation({
 			query: (bodyRequest) => ({
 				url: '/callRequest/add',
 				method: 'POST',
-				body: bodyRequest
-			})
+				body: bodyRequest,
+			}),
 		}),
 		getNotifications: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getUserNotification',
+				url: '/users/getUserNotification',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		acceptedChat: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/chatRequest/acceptChatRequest',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		rejectChat: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/chatRequest/rejectChatRequest',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		endChatTime: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/chatRequest/endChat',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		getHistory: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getUserById',
+				url: '/users/getUserById',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		activeAstrologerCategory: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/activeAstrologerCategory',
+				url: '/users/activeAstrologerCategory',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getBanner: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getBanner',
+				url: '/users/getBanner',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getActiveBlogs: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/activeBlogs',
+				url: '/users/activeBlogs',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		updateUserProfile: builder.mutation({
 			query: ({ id, bodyContent }) => ({
-				url: `/user/update/${id}`,
+				url: `/users/user/update/${id}`,
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		addReview: builder.mutation({
 			query: (bodyContent) => ({
-				url: `/userReview/add`,
+				url: '/users/userReview/add',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getReview: builder.mutation({
 			query: (bodyContent) => ({
-				url: `/getAstrologerUserReview`,
+				url: '/users/getAstrologerUserReview',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getFollowedAstrologer: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getFollower',
+				url: '/users/getFollower',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		followAstrologer: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/follower/add',
+				url: '/users/follower/add',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		unFollowAstrologer: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/follower/update',
+				url: '/users/follower/update',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		addAmountInWallet: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/addpayment',
+				url: '/users/addpayment',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		getAstrologerById: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getAstrologerForCustomer',
+				url: '/users/getAstrologerForCustomer',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		getPopUpAd: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getPopup',
+				url: '/users/getPopup',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		getHelpSupport: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getHelpSupport',
+				url: '/users/getHelpSupport',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		addTicket: builder.mutation({
 			query: (bodyContent) => ({
-				url: 'ticket/add',
+				url: '/users/ticket/add',
 				method: 'POST',
 				body: bodyContent,
-			})
+			}),
 		}),
 		getAvailableTimeSlots: builder.query({
 			query: (body) => ({
 				url: `available-slots?astrologer_id=${body.id}&date=${body.date}`,
-				method: 'GET'
-			})
+				method: 'GET',
+			}),
 		}),
 		getUnlimitedAstrologers: builder.mutation({
 			query: (bodyContent) => ({
-				url: '/getunlimitedAstrologer',
+				url: '/users/getunlimitedAstrologer',
 				method: 'POST',
-				body: bodyContent
+				body: bodyContent,
 			}),
 		}),
 		bookUserSlot: builder.mutation({
 			query: (bodyContent) => ({
-				url: 'book_slots',
+				url: '/users/book_slots',
 				method: 'POST',
-				body: bodyContent
+				body: bodyContent,
 			}),
 		}),
 		sendMessage: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/chat/send',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getMessages: builder.query({
 			query: (body) => ({
 				url: `/chat/messages?user_id=${body.user_id}&astrologer_id=${body.astrologer_id}`,
-				method: 'GET'
+				method: 'GET',
 			}),
 		}),
 		getChatMessages: builder.mutation({
 			query: (bodyContent) => ({
-				url: `/chat/messages`,
+				url: '/chat/messages',
 				method: 'POST',
-				body: bodyContent
+				body: bodyContent,
 			}),
-		})
-	})
-})
+		}),
+	}),
+});
 
 export const {
 	useGetAstrologersMutation,

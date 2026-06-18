@@ -25,7 +25,7 @@ const ScrollableHorizontalList = (props: Props) => {
       ref={horizontalScrollViewRef}
       showsHorizontalScrollIndicator={false}
       horizontal
-      contentContainerStyle={{gap: Sizes.base,paddingStart: normalize(8), paddingEnd: normalize(8),}}>
+      contentContainerStyle={{gap: Sizes.base,paddingStart: normalize(8), paddingEnd: normalize(8)}}>
       {props.categories.map((item, index) => (
         <TouchableOpacity
           key={index}

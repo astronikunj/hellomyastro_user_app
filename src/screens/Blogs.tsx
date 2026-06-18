@@ -129,6 +129,7 @@ const Blogs = () => {
                 </View>
               );
             }
+            return null;
           }}
 					onEndReached={loadMoreData}
 					onEndReachedThreshold={0.8}

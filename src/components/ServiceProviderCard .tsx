@@ -11,13 +11,13 @@ const ServiceProviderCard = ({
   price,
   imageUrl,
   onPressChat,
-  onPressCall
+  onPressCall,
 }: any) => {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
-        <Image 
-          source={{ uri: imageUrl || 'https://via.placeholder.com/80' }} 
+        <Image
+          source={{ uri: imageUrl || 'https://via.placeholder.com/80' }}
           style={styles.avatar}
         />
         <View style={styles.headerText}>
@@ -27,16 +27,16 @@ const ServiceProviderCard = ({
           <Text style={styles.experience}>Exp: {experience}</Text>
         </View>
       </View>
-      
+
       <View style={styles.ratingContainer}>
         <MaterialIcons name="star" size={20} color="#FFD700" />
         <Text style={styles.rating}>{rating}</Text>
       </View>
-      
+
       <View style={styles.priceContainer}>
         <Text style={styles.price}>{price}</Text>
       </View>
-      
+
       <View style={styles.actionButtons}>
         <TouchableOpacity style={styles.chatButton} onPress={onPressChat}>
           <Text style={styles.buttonText}>Chat</Text>

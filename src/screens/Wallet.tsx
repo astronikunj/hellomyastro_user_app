@@ -259,7 +259,7 @@ const Wallet = (props: Props) => {
                     Get {selectedAmounId?.cashback}% Extra
                   </Text>
                   <Text style={styles.cashbackAmt}>
-                    {`\u20B9`}
+                    {'\u20B9'}
                     {(
                       parseInt(selectedAmounId?.amount.toString()) *
                       (parseInt(selectedAmounId?.cashback.toString()) / 100)

@@ -4,7 +4,11 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-nati
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const LeftTriangle = ({ height }) => {
+interface TriangleProps {
+  height: number;
+}
+
+const LeftTriangle = ({ height }: TriangleProps) => {
   // Triangle height should match container height
   const triangleHeight = height || windowHeight * 0.05; // Default to 5% of screen height
   const triangleWidth = 15;
@@ -16,12 +20,12 @@ const LeftTriangle = ({ height }) => {
         borderLeftWidth: triangleWidth,
         borderTopWidth: triangleHeight / 2,
         borderBottomWidth: triangleHeight / 2,
-      }
+      },
     ]} />
   );
 };
 
-const RightTriangle = ({ height }) => {
+const RightTriangle = ({ height }: TriangleProps) => {
   const triangleHeight = height || windowHeight * 0.05;
   const triangleWidth = 15;
 
@@ -32,12 +36,16 @@ const RightTriangle = ({ height }) => {
         borderRightWidth: triangleWidth,
         borderTopWidth: triangleHeight / 2,
         borderBottomWidth: triangleHeight / 2,
-      }
+      },
     ]} />
   );
 };
 
-const BannerButton = ({ onPress }) => {
+interface BannerButtonProps {
+  onPress: () => void;
+}
+
+const BannerButton = ({ onPress }: BannerButtonProps) => {
   const containerHeight = windowHeight * 0.05; // 5% of screen height
 
   return (

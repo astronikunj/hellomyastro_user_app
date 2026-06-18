@@ -43,8 +43,8 @@ const HomeHeader = (props: Props) => {
       <View style={styles.rightContainer}>
         <TouchableOpacity
           onPress={() => {
-            if (isLoggedIn) navigation.navigate('wallet');
-            else navigation.navigate('login');
+            if (isLoggedIn) {navigation.navigate('wallet');}
+            else {navigation.navigate('login');}
             Alert.alert('Message', 'This service is not available right now!');
           }}
           style={{flexDirection: 'row', gap: normalize(Sizes.base)}}

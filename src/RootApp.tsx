@@ -127,14 +127,14 @@ const RootApp = () => {
           const time = Math.floor(Date.now() / 1000) + 2;
           dispatch(updateChatStartTime(time));
           setShowAcceptPopup(false);
-          if(chatType == "unlimited") {
+          if(chatType == 'unlimited') {
             navigationRef.current?.navigate('unlimitedChat', {
             chatIdNoti: chatId,
             astrologerId: astrologerId,
             astroProfile: astroProfile,
             astrologerName: astrologerName,
             chatDuration: chatDuration,
-            astrologerUserId: astrologerUserId
+            astrologerUserId: astrologerUserId,
           });
           } else {
             navigationRef.current?.navigate('chat', {
@@ -182,7 +182,7 @@ const RootApp = () => {
           <Stack.Screen name="refund-policy" component={RefundPolicyScreen} />
           <Stack.Screen name="setting" component={SettingsScreen} />
           <Stack.Screen name="raise-ticket" component={RaiseTicket} />
-          <Stack.Screen name='unlimitedChat' component={UnlimitedChatScreen} />
+          <Stack.Screen name="unlimitedChat" component={UnlimitedChatScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       {!isConnected && (
@@ -195,20 +195,20 @@ const RootApp = () => {
       )}
       <PopUp
         isVisible={showAcceptPopup}
-        profileUrl={`${imgBaseurl}${acceptItem?.body.profile}`}
+        profileUrl={acceptItem?.body?.profile ? `${imgBaseurl}${acceptItem.body.profile}` : undefined}
         title={acceptItem?.title}
-        description={acceptItem?.body.description}
+        description={acceptItem?.body?.description}
         buttons={[
           {
             label: 'Accept',
             onPress: () => {
               handleAcceptChat(
-                acceptItem?.body.chatId,
-                acceptItem?.body.astrologerId,
-                acceptItem?.body.profile,
-                acceptItem?.body.astrologerName,
-                acceptItem?.body.chat_duration,
-                acceptItem?.body.chatType,
+                acceptItem?.body?.chatId,
+                acceptItem?.body?.astrologerId,
+                acceptItem?.body?.profile,
+                acceptItem?.body?.astrologerName,
+                acceptItem?.body?.chat_duration,
+                acceptItem?.body?.chatType,
                 acceptItem?.body?.astrologerUserId,
               );
             },

@@ -1,6 +1,6 @@
 import { Text, type TextProps, StyleSheet } from 'react-native';
 
-import { Colors, Fonts, Sizes } from '@/assets'; 
+import { Colors, Fonts, Sizes } from '@/assets';
 import { normalize } from '@/utils/normalize';
 
 export type ThemedTextProps = TextProps & {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: normalize(14),
     fontFamily: Fonts.medium,
     color: Colors.colorGrey,
-    letterSpacing: 0.5
+    letterSpacing: 0.5,
   },
   defaultSemiBold: {
     fontSize: normalize(Sizes.medium),
@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
   },
   small: {
     fontSize: normalize(11.5),
-    fontFamily: Fonts.regular
-  }
+    fontFamily: Fonts.regular,
+  },
 });

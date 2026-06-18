@@ -7,32 +7,32 @@ export const productService = createApi({
 		baseUrl: baseUrl,
 		prepareHeaders: (headers) => {
 			return headers;
-		}
+		},
 	}),
 	endpoints: (builder) => ({
 		getProductCategories: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/getproductCategory',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getLatestProduct: builder.mutation({
 			query: (bodyContent) => ({
 				url: '/getAstromallProduct',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
 		getProductById: builder.mutation({
 			query: (bodyContent) => ({
-				url: `/getAstromallProductById`,
+				url: '/getAstromallProductById',
 				method: 'POST',
-				body: bodyContent
-			})
+				body: bodyContent,
+			}),
 		}),
-	})
-})
+	}),
+});
 
 export const {
 	useGetProductCategoriesMutation,

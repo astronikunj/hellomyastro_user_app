@@ -27,7 +27,7 @@ const WHATSAPP = '+919457759479';
 const ProductDetail = (props: Props) => {
   const navigation = useNavigation<any>();
   const route = useRoute();
-  const inset = useSafeAreaInsets()
+  const inset = useSafeAreaInsets();
   const {productId} = route.params as {productId: string};
   console.log('Product ID:', productId);
   const [productDetail, setProductDetail] = React.useState<any>([]);
@@ -102,7 +102,7 @@ const ProductDetail = (props: Props) => {
         {/* <TouchableOpacity activeOpacity={0.8} style={styles.button}>
           <Text style={styles.buttonText}>Share</Text>
         </TouchableOpacity> */}
-        <TouchableOpacity activeOpacity={0.8} style={styles.button} 
+        <TouchableOpacity activeOpacity={0.8} style={styles.button}
         onPress={() =>
           Linking.openURL(`https://wa.me/${WHATSAPP.replace('+', '')}`)
         }

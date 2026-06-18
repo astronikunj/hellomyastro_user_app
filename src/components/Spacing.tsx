@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
 type Props = {
 	width?: number | 0;
@@ -9,9 +9,9 @@ type Props = {
 const Spacing = (props: Props) => {
 	return (
 		<View style={{height: props.height, width: props.width}} />
-	)
-}
+	);
+};
 
-export default Spacing
+export default Spacing;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

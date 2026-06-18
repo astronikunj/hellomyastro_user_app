@@ -71,7 +71,7 @@ const Profile = (props: Props) => {
           console.log(res);
           if (res.status == 200) {
             ToastMessage({message: 'Follow successfully!'});
-            setIsFollowAstro(true)
+            setIsFollowAstro(true);
           }
         })
         .catch(error => {
@@ -88,7 +88,7 @@ const Profile = (props: Props) => {
       .then(res => {
         if (res.status == 200) {
           ToastMessage({message: 'Unfollow successfully!'});
-          setIsFollowAstro(false)
+          setIsFollowAstro(false);
         }
       })
       .catch(error => {
